@@ -105,17 +105,24 @@
   border-radius: var(--r-lg); background: var(--bg-elev);
   border: 1px solid var(--line-soft);
 }
+/* --x es la X del área de respeto y se fija por diagrama, porque
+   se deriva de la altura del isotipo y esa altura cambia entre el
+   lockup horizontal y el símbolo suelto. */
 .clearspace__box {
-  position: relative; padding: 3rem;
+  position: relative; width: fit-content; padding: var(--x, 3rem);
   outline: 1px dashed color-mix(in srgb, var(--accent-3) 60%, transparent);
   outline-offset: -1px;
 }
-.clearspace__box::before {
-  content: "X"; position: absolute; top: .5rem; left: .5rem;
-  font-family: var(--font-mono); font-size: var(--fs-micro);
+/* La X ocupa exactamente la esquina del área de respeto, así que su
+   tamaño ES la medida: se ve cuánto vale X sin tener que acotarla. */
+.clearspace__x {
+  position: absolute; top: 0; left: 0;
+  width: var(--x); height: var(--x);
   color: var(--accent-3);
+  opacity: .85;
 }
 .clearspace__inner {
+  display: grid; place-items: center;
   outline: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
   padding: var(--sp-3);
 }

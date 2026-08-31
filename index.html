@@ -99,6 +99,13 @@
     <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M12 3.5l2.7 5.6 6 .9-4.35 4.3 1.03 6.1L12 17.6 6.62 20.4l1.03-6.1L3.3 10l6-.9z"/>
     </symbol>
+    <!-- Marca de medida del área de respeto. Es una X trazada, no la letra:
+         se escala al tamaño real de X sin depender de la métrica de la fuente. -->
+    <symbol id="i-xmark" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.4" stroke-linecap="round">
+      <path d="M5 5l14 14M19 5L5 19"/>
+    </symbol>
+
     <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M13.5 2.5L5 13.5h5.5L10 21.5 19 10.5h-5.5z"/>
     </symbol>
@@ -592,43 +599,66 @@
       </div>
     </div>
 
-    <div class="grid grid--2" style="margin-bottom:var(--sp-8)">
+    <h3 style="margin-bottom:var(--sp-4)">Área de respeto</h3>
+    <p class="card__text" style="margin-bottom:var(--sp-5);max-width:62ch">
+      <strong>X = un cuarto de la altura del isotipo.</strong> Ningún elemento
+      — texto, foto, borde o margen de página — puede entrar en esa zona.
+      La medida sale siempre del isotipo, así que en el lockup horizontal la X
+      es más pequeña: lo que manda es el símbolo, no el conjunto.
+      Si dudas, deja más.
+    </p>
+
+    <div class="grid grid--2" data-stagger style="margin-bottom:var(--sp-8)">
       <div data-reveal="left">
-        <h3 style="margin-bottom:var(--sp-4)">Área de respeto</h3>
-        <p class="card__text" style="margin-bottom:var(--sp-4)">
-          <strong>X = un cuarto de la altura del isotipo.</strong> Ningún
-          elemento — texto, foto, borde o margen de página — puede entrar en
-          esa zona. Si dudas, deja más.
-        </p>
         <div class="clearspace">
-          <div class="clearspace__box">
+          <div class="clearspace__box" style="--x:18px">
+            <svg class="clearspace__x" role="img" aria-label="X, el ancho del área de respeto"><use href="#i-xmark"></use></svg>
             <div class="clearspace__inner">
-              <svg viewBox="0 0 458 501" style="width:72px;color:var(--accent)" aria-hidden="true"><use href="#iso"></use></svg>
+              <svg viewBox="0 0 470 130" style="width:min(300px,88%);color:var(--accent)"
+                   role="img" aria-label="Logotipo horizontal con su área de respeto"><use href="#logotipo"></use></svg>
             </div>
           </div>
         </div>
+        <p class="logo-box__caption" style="margin-top:var(--sp-3);text-align:center">
+          Logotipo horizontal · el uso por defecto
+        </p>
       </div>
 
       <div data-reveal="right">
-        <h3 style="margin-bottom:var(--sp-4)">Tamaños mínimos</h3>
-        <div class="table-wrap">
-          <table class="spec-table">
-            <thead>
-              <tr><th>Versión</th><th>Digital</th><th>Impreso</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Horizontal</td><td><code>120 px</code> de ancho</td><td><code>30 mm</code></td></tr>
-              <tr><td>Isotipo</td><td><code>24 px</code> de alto</td><td><code>8 mm</code></td></tr>
-              <tr><td>Favicon</td><td><code>16 px</code></td><td>—</td></tr>
-              <tr><td>App icon</td><td><code>512 px</code></td><td>—</td></tr>
-            </tbody>
-          </table>
+        <div class="clearspace">
+          <div class="clearspace__box" style="--x:44px">
+            <svg class="clearspace__x" role="img" aria-label="X, el ancho del área de respeto"><use href="#i-xmark"></use></svg>
+            <div class="clearspace__inner">
+              <svg viewBox="0 0 458 501" style="width:160px;color:var(--accent)"
+                   role="img" aria-label="Isotipo con su área de respeto"><use href="#iso"></use></svg>
+            </div>
+          </div>
         </div>
-        <p class="card__text" style="margin-top:var(--sp-4)">
-          Por debajo del mínimo horizontal, el logotipo se cae y se usa
-          <strong>solo el isotipo</strong>. Nunca se encoge el texto para que quepa.
+        <p class="logo-box__caption" style="margin-top:var(--sp-3);text-align:center">
+          Isotipo · app icon, avatar, favicon
         </p>
       </div>
+    </div>
+
+    <div data-reveal style="margin-bottom:var(--sp-8)">
+      <h3 style="margin-bottom:var(--sp-4)">Tamaños mínimos</h3>
+      <div class="table-wrap" style="max-width:640px">
+        <table class="spec-table">
+          <thead>
+            <tr><th>Versión</th><th>Digital</th><th>Impreso</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Horizontal</td><td><code>120 px</code> de ancho</td><td><code>30 mm</code></td></tr>
+            <tr><td>Isotipo</td><td><code>24 px</code> de alto</td><td><code>8 mm</code></td></tr>
+            <tr><td>Favicon</td><td><code>16 px</code></td><td>—</td></tr>
+            <tr><td>App icon</td><td><code>512 px</code></td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="card__text" style="margin-top:var(--sp-4);max-width:62ch">
+        Por debajo del mínimo horizontal, el logotipo se cae y se usa
+        <strong>solo el isotipo</strong>. Nunca se encoge el texto para que quepa.
+      </p>
     </div>
 
     <h3 style="margin-bottom:var(--sp-5)">Usos incorrectos</h3>
@@ -958,8 +988,14 @@
       <div data-reveal="right">
         <h3 style="margin-bottom:var(--sp-4)">Sobre la rejilla</h3>
         <div class="icon-grid-demo">
-          <svg aria-hidden="true"><use href="#i-shake"></use></svg>
+          <svg viewBox="0 0 458 501" role="img"
+               aria-label="El isotipo encajado en la rejilla de construcción"><use href="#iso"></use></svg>
         </div>
+        <p class="card__text" style="margin-top:var(--sp-4)">
+          El isotipo se apoya en la misma rejilla que los iconos: mismos ejes,
+          mismos ángulos, mismo peso visual. Por eso el logo y el set parecen
+          de la misma familia y no dos sistemas pegados.
+        </p>
       </div>
     </div>
 
