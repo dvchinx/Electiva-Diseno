@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AgitaYDecide · Manual de Marca</title>
+<meta name="description" content="Manual de identidad visual y verbal de AgitaYDecide: la app que decide por ti cuando nadie se decide.">
+<meta name="author" content="Jesús Flórez · David Martinez">
+<meta name="color-scheme" content="dark light">
+
+<!-- Vista previa al compartir -->
+<meta property="og:title" content="AgitaYDecide · Manual de Marca">
+<meta property="og:description" content="Identidad visual y verbal de la app que convierte la indecisión en un gesto de un segundo.">
+<meta property="og:type" content="website">
+
+<link rel="icon" href="assets/logo/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/sections.css">
+
+<script>
+  /* Marca que hay JS (habilita los estados iniciales de las animaciones)
+     y aplica el tema guardado antes de pintar, para evitar el parpadeo. */
+  document.documentElement.classList.add("js");
+  try {
+    var t = localStorage.getItem("ayd-theme");
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
+</script>
+</head>
+
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<!-- ============ Biblioteca de SVG ============
+     El logo vive AQUÍ una sola vez: todas sus apariciones lo
+     reutilizan con <use>. Ver assets/logo/README.md. -->
+<svg class="sprite" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- ============================================================
+         LOGO REAL · una mano agitando un teléfono, con los arcos del
+         movimiento. El original es un PNG de silueta, así que se usa su
+         canal alfa como máscara de luminancia: el relleno es
+         currentColor y el logo hereda el color de su contexto igual
+         que si fuera vectorial (claro, oscuro y sobre el acento).
+         La máscara se declara una sola vez, fuera de los <symbol>,
+         para que <use> no duplique su id.
+         ============================================================ -->
+    <mask id="m-agita" maskUnits="userSpaceOnUse" x="0" y="0" width="458" height="501">
+      <image href="assets/logo/logo-agita-mask.png" x="0" y="0" width="458" height="501"/>
+    </mask>
+
+    <!-- ISOTIPO · símbolo suelto -->
+    <symbol id="iso" viewBox="0 0 458 501">
+      <rect width="458" height="501" fill="currentColor" mask="url(#m-agita)"/>
+    </symbol>
+
+    <!-- LOGOTIPO · lockup horizontal -->
+    <symbol id="logotipo" viewBox="0 0 470 130">
+      <g transform="translate(0,8) scale(0.2275)">
+        <rect width="458" height="501" fill="currentColor" mask="url(#m-agita)"/>
+      </g>
+      <text x="128" y="86" font-family="Space Grotesk, sans-serif" font-size="48"
+            font-weight="700" letter-spacing="-1.8" fill="currentColor">AgitaYDecide</text>
+    </symbol>
+
+    <!-- Iconos del sistema: rejilla 24, trazo 2, terminaciones redondas -->
+    <symbol id="i-shake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="2" width="8" height="20" rx="2"/><path d="M12 18h.01"/>
+      <path d="M4 8v8M20 8v8"/>
+    </symbol>
+    <symbol id="i-dice" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="4"/>
+      <path d="M8.5 8.5h.01M15.5 8.5h.01M8.5 15.5h.01M15.5 15.5h.01M12 12h.01"/>
+    </symbol>
+    <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/>
+    </symbol>
+    <symbol id="i-group" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0"/>
+      <path d="M16.5 5.5a3.2 3.2 0 0 1 0 5M18 20a6 6 0 0 0-2.2-4.6"/>
+    </symbol>
+    <symbol id="i-history" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3 4v4h4"/><path d="M12 8v4.5l3 1.8"/>
+    </symbol>
+    <symbol id="i-tune" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>
+    </symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3.5l2.7 5.6 6 .9-4.35 4.3 1.03 6.1L12 17.6 6.62 20.4l1.03-6.1L3.3 10l6-.9z"/>
+    </symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13.5 2.5L5 13.5h5.5L10 21.5 19 10.5h-5.5z"/>
+    </symbol>
+
+    <!-- Iconos de interfaz de esta guía -->
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M4 7h16M4 12h16M4 17h16"/>
+    </symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M6 6l12 12M18 6L6 18"/>
+    </symbol>
+    <symbol id="i-theme" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="4.2"/>
+      <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/>
+    </symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3v12M7.5 10.5L12 15l4.5-4.5M4 19h16"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============ Cargador ============
+     Va después del sprite para que <use href="#iso"> resuelva
+     el símbolo que ya está en el documento. -->
+<div class="preloader" role="status" aria-live="polite">
+  <svg class="preloader__mark" viewBox="0 0 458 501" aria-hidden="true" style="color: var(--accent)">
+    <use href="#iso"></use>
+  </svg>
+  <p class="preloader__text">Agitando</p>
+</div>
+
+<div class="progress" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<!-- ============ Cabecera móvil ============ -->
+<header class="topbar">
+  <a href="#inicio" style="display:flex;align-items:center;gap:.6rem">
+    <svg width="30" height="30" aria-hidden="true" style="color:var(--accent)"><use href="#iso"></use></svg>
+    <strong style="font-family:var(--font-display);font-size:.95rem">AgitaYDecide</strong>
+  </a>
+  <div class="row" style="gap:.5rem">
+    <button class="icon-btn" data-theme-toggle aria-pressed="false" aria-label="Cambiar a tema claro">
+      <svg width="20" height="20" aria-hidden="true"><use href="#i-theme"></use></svg>
+    </button>
+    <button class="icon-btn" data-nav-toggle aria-expanded="false" aria-controls="nav" aria-label="Abrir el índice">
+      <svg width="20" height="20" aria-hidden="true"><use href="#i-menu"></use></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ============ Índice lateral ============ -->
+<nav class="nav" id="nav" aria-label="Índice del manual">
+  <a class="nav__brand" href="#inicio">
+    <svg class="nav__brand-mark" viewBox="0 0 458 501" aria-hidden="true" style="color:var(--accent)">
+      <use href="#iso"></use>
+    </svg>
+    <span>
+      <span class="nav__brand-name">AgitaYDecide</span><br>
+      <span class="nav__brand-sub">Manual v1.0</span>
+    </span>
+  </a>
+
+  <ul class="nav__list">
+    <li><a class="nav__link" href="#inicio"><span>00</span><span>Portada</span></a></li>
+    <li><a class="nav__link" href="#esencia"><span>01</span><span>Esencia</span></a></li>
+    <li><a class="nav__link" href="#personalidad"><span>02</span><span>Personalidad</span></a></li>
+    <li><a class="nav__link" href="#voz"><span>03</span><span>Voz y tono</span></a></li>
+    <li><a class="nav__link" href="#logo"><span>04</span><span>Logo</span></a></li>
+    <li><a class="nav__link" href="#color"><span>05</span><span>Color</span></a></li>
+    <li><a class="nav__link" href="#tipografia"><span>06</span><span>Tipografía</span></a></li>
+    <li><a class="nav__link" href="#iconografia"><span>07</span><span>Iconografía</span></a></li>
+    <li><a class="nav__link" href="#grafismos"><span>08</span><span>Grafismos</span></a></li>
+    <li><a class="nav__link" href="#imagen"><span>09</span><span>Imagen</span></a></li>
+    <li><a class="nav__link" href="#motion"><span>10</span><span>Movimiento</span></a></li>
+    <li><a class="nav__link" href="#componentes"><span>11</span><span>Componentes</span></a></li>
+    <li><a class="nav__link" href="#aplicaciones"><span>12</span><span>Aplicaciones</span></a></li>
+    <li><a class="nav__link" href="#recursos"><span>13</span><span>Recursos</span></a></li>
+  </ul>
+
+  <div class="nav__foot">
+    <span class="nav__brand-sub">Tema</span>
+    <button class="icon-btn" data-theme-toggle aria-pressed="false" aria-label="Cambiar a tema claro">
+      <svg width="20" height="20" aria-hidden="true"><use href="#i-theme"></use></svg>
+    </button>
+  </div>
+</nav>
+
+<main class="main" id="contenido">
+
+<!-- ======================================================
+     00 · PORTADA
+     ====================================================== -->
+<section class="hero section--flush" id="inicio">
+  <div class="blobs" aria-hidden="true">
+    <div class="blob blob--1"></div>
+    <div class="blob blob--2"></div>
+    <div class="blob blob--3"></div>
+  </div>
+
+  <div class="hero__inner">
+    <div>
+      <h1 class="hero__title reveal-lines">
+        <span class="line"><span style="--i:0">Agita</span></span>
+        <span class="line"><span style="--i:1" class="outline">y</span></span>
+        <span class="line"><span style="--i:2" class="accent">Decide</span></span>
+      </h1>
+
+      <p class="hero__sub" data-reveal>
+        La app que pone el punto final cuando nadie se decide.
+        Esto es cómo se ve, cómo suena y cómo se mueve.
+      </p>
+
+      <div class="row" style="margin-top:var(--sp-6)" data-reveal>
+        <a class="btn" href="#esencia" data-magnetic="0.2">Empezar por el principio</a>
+        <a class="btn btn--ghost" href="#recursos">Descargar recursos</a>
+      </div>
+
+      <div class="hero__meta" data-reveal>
+        <span>14 secciones</span>
+        <span>Electiva · Diseño Web</span>
+        <span>Jesús Flórez · David Martinez</span>
+      </div>
+    </div>
+
+    <!-- Demo interactiva: el gesto de la marca, jugable -->
+    <div class="hero__demo" data-reveal="scale">
+      <div class="shaker" data-shaker role="button" tabindex="0"
+           aria-label="Agitar para obtener una decisión">
+        <svg class="shaker__mark" viewBox="0 0 458 501" aria-hidden="true" style="color:var(--accent)">
+          <use href="#iso"></use>
+        </svg>
+        <span class="shaker__hint">Toca · o agita el móvil</span>
+      </div>
+
+      <div class="verdict" aria-live="polite">
+        <span class="verdict__label">El veredicto</span>
+        <span class="verdict__value" data-verdict>Aún no has agitado</span>
+      </div>
+
+      <p class="nav__brand-sub">
+        Decisiones tomadas: <span data-shake-count>0</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span>Baja</span>
+    <span class="scroll-cue__line"></span>
+  </div>
+</section>
+
+<!-- Marquesina de atributos -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span class="marquee__item">Rápida <i>●</i></span>
+    <span class="marquee__item">Imparcial <i>●</i></span>
+    <span class="marquee__item">Cómplice <i>●</i></span>
+    <span class="marquee__item">Ligera <i>●</i></span>
+    <span class="marquee__item">Rápida <i>●</i></span>
+    <span class="marquee__item">Imparcial <i>●</i></span>
+    <span class="marquee__item">Cómplice <i>●</i></span>
+    <span class="marquee__item">Ligera <i>●</i></span>
+  </div>
+</div>
+
+<!-- ======================================================
+     01 · ESENCIA
+     ====================================================== -->
+<section class="section" id="esencia">
+  <div class="section__inner">
+    <header class="section__head">
+      <span class="section__num">01 — Esencia</span>
+      <h2>Por qué existe AgitaYDecide</h2>
+      <p class="section__lead">
+        Antes de un color o una tipografía hay una idea. Todo lo demás en este
+        manual es esa idea traducida a decisiones visuales.
+      </p>
+    </header>
+
+    <p class="big-quote" data-reveal style="margin-bottom:var(--sp-8)">
+      Nadie discute por lo importante.<br>
+      Se discute por <em>dónde cenamos</em>.
+    </p>
+
+    <div class="grid grid--2" data-stagger style="margin-bottom:var(--sp-7)">
+      <article class="card card--hover" data-reveal>
+        <p class="card__kicker">Propósito</p>
+        <h3 class="card__title">Devolver el tiempo que se pierde dudando</h3>
+        <p class="card__text">
+          Las decisiones pequeñas no merecen media hora de conversación.
+          AgitaYDecide las cierra en un segundo para que la energía vaya
+          a lo que sí importa: el plan, no la logística del plan.
+        </p>
+      </article>
+
+      <article class="card card--hover" data-reveal>
+        <p class="card__kicker">Promesa</p>
+        <h3 class="card__title">Tú pones las opciones, nosotros el punto final</h3>
+        <p class="card__text">
+          La app nunca opina sobre qué es mejor. Solo garantiza que se elija
+          algo, que se elija ya, y que nadie quede como el culpable de haber
+          elegido. El azar es el que da la cara.
+        </p>
+      </article>
+    </div>
+
+    <div class="grid grid--3" data-stagger style="margin-bottom:var(--sp-8)">
+      <article class="card" data-reveal>
+        <p class="card__kicker">Misión</p>
+        <p>Convertir la indecisión cotidiana en un gesto de un segundo.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="card__kicker">Visión</p>
+        <p>Que «agítalo» se entienda en cualquier mesa como «decídelo ya».</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="card__kicker">Territorio</p>
+        <p>El instante entre «me da igual» y «bueno, ¿entonces qué?».</p>
+      </article>
+    </div>
+
+    <h3 style="margin-bottom:var(--sp-5)">Los cuatro valores</h3>
+    <div class="grid grid--4" data-stagger>
+      <article class="card value-card" data-reveal>
+        <span class="value-card__n" aria-hidden="true">1</span>
+        <p class="card__kicker">Ligereza</p>
+        <p class="card__text">Ninguna decisión pequeña merece sentirse pesada. Ni la de usar la app.</p>
+      </article>
+      <article class="card value-card" data-reveal>
+        <span class="value-card__n" aria-hidden="true">2</span>
+        <p class="card__kicker">Rapidez</p>
+        <p class="card__text">Si tarda más que discutirlo, fracasamos. Tres toques como techo.</p>
+      </article>
+      <article class="card value-card" data-reveal>
+        <span class="value-card__n" aria-hidden="true">3</span>
+        <p class="card__kicker">Imparcialidad</p>
+        <p class="card__text">El azar es honesto y se nota. Sin resultados «sugeridos» ni patrocinados.</p>
+      </article>
+      <article class="card value-card" data-reveal>
+        <span class="value-card__n" aria-hidden="true">4</span>
+        <p class="card__kicker">Complicidad</p>
+        <p class="card__text">Hablamos como quien ya tiene hambre, no como un formulario.</p>
+      </article>
+    </div>
+
+    <div class="grid grid--4" data-stagger style="margin-top:var(--sp-8)">
+      <div data-reveal>
+        <p class="stat__value" data-count="6" data-suffix="">0</p>
+        <p class="stat__label">colores en el sistema</p>
+      </div>
+      <div data-reveal>
+        <p class="stat__value" data-count="3">0</p>
+        <p class="stat__label">familias tipográficas</p>
+      </div>
+      <div data-reveal>
+        <p class="stat__value" data-count="8">0</p>
+        <p class="stat__label">iconos base</p>
+      </div>
+      <div data-reveal>
+        <p class="stat__value" data-count="14">0</p>
+        <p class="stat__label">secciones normadas</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     02 · PERSONALIDAD
+     ====================================================== -->
+<section class="section" id="personalidad">
+  <div class="section__inner">
+    <header class="section__head">
+      <span class="section__num">02 — Personalidad</span>
+      <h2>Si la marca fuera una persona</h2>
+      <p class="section__lead">
+        Sería quien, en medio del grupo de WhatsApp muerto, escribe
+        «listo, es la de siempre, nos vemos a las 8».
+      </p>
+    </header>
+
+    <div class="grid grid--2" style="margin-bottom:var(--sp-8)">
+      <article class="card" data-reveal="left">
+        <p class="card__kicker">Arquetipo</p>
+        <h3 class="card__title">El Cómplice</h3>
+        <p class="card__text">
+          Mezcla de bufón y amigo de confianza. No se pone por encima de nadie
+          ni pretende saber qué te conviene: rompe el bloqueo con humor y
+          asume la culpa del resultado para que tú no tengas que hacerlo.
+        </p>
+      </article>
+
+      <div class="stack" data-reveal="right">
+        <div class="pbar">
+          <div class="pbar__labels"><span>Formal</span><span>Cercana</span></div>
+          <div class="pbar__track" data-value="88"><div class="pbar__fill"></div><div class="pbar__knob"></div></div>
+        </div>
+        <div class="pbar">
+          <div class="pbar__labels"><span>Seria</span><span>Juguetona</span></div>
+          <div class="pbar__track" data-value="76"><div class="pbar__fill"></div><div class="pbar__knob"></div></div>
+        </div>
+        <div class="pbar">
+          <div class="pbar__labels"><span>Con rodeos</span><span>Directa</span></div>
+          <div class="pbar__track" data-value="92"><div class="pbar__fill"></div><div class="pbar__knob"></div></div>
+        </div>
+        <div class="pbar">
+          <div class="pbar__labels"><span>Calmada</span><span>Enérgica</span></div>
+          <div class="pbar__track" data-value="84"><div class="pbar__fill"></div><div class="pbar__knob"></div></div>
+        </div>
+        <div class="pbar">
+          <div class="pbar__labels"><span>Neutral</span><span>Con opinión</span></div>
+          <div class="pbar__track" data-value="30"><div class="pbar__fill"></div><div class="pbar__knob"></div></div>
+        </div>
+        <p class="card__text" style="margin-top:var(--sp-2)">
+          El último es a propósito el más bajo: la marca tiene mucha
+          personalidad, pero <strong>cero opinión sobre tu decisión</strong>.
+          En cuanto opina, deja de ser imparcial.
+        </p>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:var(--sp-5)">Somos / No somos</h3>
+    <div class="grid grid--2" data-stagger>
+      <div class="dodont__item dodont__item--do" data-reveal>
+        <span class="dodont__label">Somos</span>
+        <p>Un empujón. Cerramos la conversación y desaparecemos.</p>
+      </div>
+      <div class="dodont__item dodont__item--dont" data-reveal>
+        <span class="dodont__label">No somos</span>
+        <p>Un recomendador. No sabemos qué restaurante es mejor ni queremos saberlo.</p>
+      </div>
+      <div class="dodont__item dodont__item--do" data-reveal>
+        <span class="dodont__label">Somos</span>
+        <p>Un juego con consecuencias reales, y esa tensión es divertida.</p>
+      </div>
+      <div class="dodont__item dodont__item--dont" data-reveal>
+        <span class="dodont__label">No somos</span>
+        <p>Una app de apuestas ni de azar con dinero. Ni el tono ni el color van por ahí.</p>
+      </div>
+      <div class="dodont__item dodont__item--do" data-reveal>
+        <span class="dodont__label">Somos</span>
+        <p>Nocturnos y de bolsillo: se nos usa de pie, con una mano, con prisa.</p>
+      </div>
+      <div class="dodont__item dodont__item--dont" data-reveal>
+        <span class="dodont__label">No somos</span>
+        <p>Una herramienta de productividad. Nada de gráficas, informes ni «optimizar».</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     03 · VOZ Y TONO
+     ====================================================== -->
+<section class="section" id="voz">
+  <div class="section__inner">
+    <header class="section__head">
+      <span class="section__num">03 — Voz y tono</span>
+      <h2>Cómo escribe AgitaYDecide</h2>
+      <p class="section__lead">
+        La voz no cambia nunca; el tono se ajusta al momento. Regla base:
+        si no lo dirías en voz alta con hambre a las 8 de la noche, bórralo.
+      </p>
+    </header>
+
+    <div class="grid grid--3" data-stagger style="margin-bottom:var(--sp-8)">
+      <article class="card" data-reveal>
+        <p class="card__kicker">Regla 01</p>
+        <h4 class="card__title">Frases cortas</h4>
+        <p class="card__text">Máximo 12 palabras en pantalla. Si necesita coma y luego «pero», ya es larga.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="card__kicker">Regla 02</p>
+        <h4 class="card__title">Tuteo siempre</h4>
+        <p class="card__text">Español neutro latinoamericano. Nunca «usted», nunca «el usuario».</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="card__kicker">Regla 03</p>
+        <h4 class="card__title">Humor sí, burla no</h4>
+        <p class="card__text">Nos reímos de la situación, jamás de quien no logra decidirse.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="card__kicker">Regla 04</p>
+        <h4 class="card__title">Nunca culpamos</h4>
+        <p class="card__text">Dudar no es un error. No hay mensajes que regañen ni que midan tu indecisión.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="card__kicker">Regla 05</p>
+        <h4 class="card__title">El azar da la cara</h4>
+        <p class="card__text">El resultado lo firma la app, no la persona. «Decidió el azar», no «elegiste».</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="card__kicker">Regla 06</p>
+        <h4 class="card__title">Cero jerga técnica</h4>
+        <p class="card__text">Nada de «algoritmo», «procesar», «sistema». Se dice qué pasó, en cristiano.</p>
+      </article>
+    </div>
+
+    <h3 style="margin-bottom:var(--sp-5)">Nuestro vocabulario</h3>
+    <div class="grid grid--2" style="margin-bottom:var(--sp-8)">
+      <div class="dodont__item dodont__item--do" data-reveal="left">
+        <span class="dodont__label">Decimos</span>
+        <p>agitar · veredicto · desempatar · opciones · va · listo · otra vez</p>
+      </div>
+      <div class="dodont__item dodont__item--dont" data-reveal="right">
+        <span class="dodont__label">No decimos</span>
+        <p>algoritmo · procesar · usuario · sorteo · aleatorización · su selección</p>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:var(--sp-5)">Los mismos mensajes, bien y mal</h3>
+    <div class="grid grid--2" data-stagger>
+      <div class="dodont__item dodont__item--do" data-reveal>
+        <span class="dodont__label">Así sí</span>
+        <p>«Listo. Es pizza.»</p>
+      </div>
+      <div class="dodont__item dodont__item--dont" data-reveal>
+        <span class="dodont__label">Así no</span>
+        <p>«Su selección aleatoria ha sido procesada exitosamente.»</p>
+      </div>
+      <div class="dodont__item dodont__item--do" data-reveal>
+        <span class="dodont__label">Así sí</span>
+        <p>«¿Otra vez? Va.»</p>
+      </div>
+      <div class="dodont__item dodont__item--dont" data-reveal>
+        <span class="dodont__label">Así no</span>
+        <p>«Ha excedido el número de intentos recomendado para esta sesión.»</p>
+      </div>
+      <div class="dodont__item dodont__item--do" data-reveal>
+        <span class="dodont__label">Así sí</span>
+        <p>«Faltan opciones. Con una sola no hay nada que agitar.»</p>
+      </div>
+      <div class="dodont__item dodont__item--dont" data-reveal>
+        <span class="dodont__label">Así no</span>
+        <p>«Error: el arreglo de entrada no cumple el mínimo de elementos.»</p>
+      </div>
+    </div>
+
+    <div class="voice-sample" data-reveal style="margin-top:var(--sp-7)">
+      <p class="card__kicker">Ejemplo en producto</p>
+      <div class="voice-sample__bubble">Somos cinco y nadie propone nada.</div>
+      <div class="voice-sample__bubble voice-sample__bubble--brand">Agita. Yo pongo el punto final.</div>
+      <div class="voice-sample__bubble voice-sample__bubble--brand">Decidió el azar: arepas. Nadie se enoja.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     04 · LOGO
+     ====================================================== -->
+<section class="section" id="logo">
+  <div class="section__inner">
+    <header class="section__head">
+      <span class="section__num">04 — Logo</span>
+      <h2>El símbolo y sus reglas</h2>
+      <p class="section__lead">
+        Una mano agitando un teléfono, con los arcos del movimiento a los lados.
+        El logo no representa el producto: representa <em>el gesto</em>, que es
+        justamente lo que la marca pide hacer. Es lo único que nunca se rediseña
+        sobre la marcha.
+      </p>
+    </header>
+
+    <div class="note" data-reveal style="margin-bottom:var(--sp-7)">
+      <svg width="22" height="22" style="flex:none;color:var(--accent-3)" aria-hidden="true"><use href="#i-bolt"></use></svg>
+      <p>
+        <strong>El logo es monocromo por diseño.</strong> Es una silueta plana de
+        un solo color, sin degradados ni contornos. Por eso puede adoptar
+        cualquier color del sistema según el fondo, y por eso funciona igual a
+        16 px que en una camiseta. Nunca se le añade una segunda tinta.
+      </p>
+    </div>
+
+    <h3 style="margin-bottom:var(--sp-5)">Versiones</h3>
+    <div class="grid grid--2" data-stagger style="margin-bottom:var(--sp-8)">
+      <div class="logo-box logo-box--dark jitter" data-reveal>
+        <svg viewBox="0 0 470 130" style="width:min(260px,80%);color:var(--raw-voltio)" role="img" aria-label="Logotipo horizontal sobre fondo oscuro"><use href="#logotipo"></use></svg>
+        <span class="logo-box__caption">Horizontal · principal</span>
+      </div>
+      <div class="logo-box logo-box--light jitter" data-reveal>
+        <svg viewBox="0 0 470 130" style="width:min(260px,80%);color:#0B0916" role="img" aria-label="Logotipo horizontal sobre fondo claro"><use href="#logotipo"></use></svg>
+        <span class="logo-box__caption">Monocromo · fondo claro</span>
+      </div>
+      <div class="logo-box logo-box--accent jitter" data-reveal>
+        <svg viewBox="0 0 458 501" style="width:88px;color:#0B0916" role="img" aria-label="Isotipo sobre color de acento"><use href="#iso"></use></svg>
+        <span class="logo-box__caption">Isotipo sobre Voltio</span>
+      </div>
+      <div class="logo-box logo-box--dark jitter" data-reveal>
+        <svg viewBox="0 0 458 501" style="width:88px;color:var(--raw-hueso)" role="img" aria-label="Isotipo en versión clara"><use href="#iso"></use></svg>
+        <span class="logo-box__caption">Isotipo · app icon y avatar</span>
+      </div>
+    </div>
+
+    <div class="grid grid--2" style="margin-bottom:var(--sp-8)">
+      <div data-reveal="left">
+        <h3 style="margin-bottom:var(--sp-4)">Área de respeto</h3>
+        <p class="card__text" style="margin-bottom:var(--sp-4)">
+          <strong>X = un cuarto de la altura del isotipo.</strong> Ningún
+          elemento — texto, foto, borde o margen de página — puede entrar en
+          esa zona. Si dudas, deja más.
+        </p>
+        <div class="clearspace">
+          <div class="clearspace__box">
+            <div class="clearspace__inner">
+              <svg viewBox="0 0 458 501" style="width:72px;color:var(--accent)" aria-hidden="true"><use href="#iso"></use></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal="right">
+        <h3 style="margin-bottom:var(--sp-4)">Tamaños mínimos</h3>
+        <div class="table-wrap">
+          <table class="spec-table">
+            <thead>
+              <tr><th>Versión</th><th>Digital</th><th>Impreso</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Horizontal</td><td><code>120 px</code> de ancho</td><td><code>30 mm</code></td></tr>
+              <tr><td>Isotipo</td><td><code>24 px</code> de alto</td><td><code>8 mm</code></td></tr>
+              <tr><td>Favicon</td><td><code>16 px</code></td><td>—</td></tr>
+              <tr><td>App icon</td><td><code>512 px</code></td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="card__text" style="margin-top:var(--sp-4)">
+          Por debajo del mínimo horizontal, el logotipo se cae y se usa
+          <strong>solo el isotipo</strong>. Nunca se encoge el texto para que quepa.
+        </p>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:var(--sp-5)">Usos incorrectos</h3>
+    <div class="grid grid--3" data-stagger>
+      <div class="logo-box logo-box--bad" data-reveal>
+        <svg viewBox="0 0 458 501" style="width:70px;color:var(--accent);transform:scaleX(1.7)" aria-hidden="true"><use href="#iso"></use></svg>
+        <span class="logo-box__caption">No deformar</span>
+      </div>
+      <div class="logo-box logo-box--bad" data-reveal>
+        <svg viewBox="0 0 458 501" style="width:70px;color:var(--accent);transform:rotate(24deg)" aria-hidden="true"><use href="#iso"></use></svg>
+        <span class="logo-box__caption">No rotar</span>
+      </div>
+      <div class="logo-box logo-box--bad" data-reveal>
+        <svg viewBox="0 0 458 501" style="width:70px;color:#8A5CF6" aria-hidden="true"><use href="#iso"></use></svg>
+        <span class="logo-box__caption">No usar colores ajenos</span>
+      </div>
+      <div class="logo-box logo-box--bad" data-reveal>
+        <svg viewBox="0 0 458 501" style="width:70px;color:var(--accent);filter:drop-shadow(4px 6px 0 var(--accent-2))" aria-hidden="true"><use href="#iso"></use></svg>
+        <span class="logo-box__caption">No añadir sombras ni efectos</span>
+      </div>
+      <div class="logo-box logo-box--bad" data-reveal style="background:linear-gradient(135deg,#C9B98F,#D6FF3F)">
+        <svg viewBox="0 0 458 501" style="width:70px;color:var(--accent)" aria-hidden="true"><use href="#iso"></use></svg>
+        <span class="logo-box__caption" style="color:#3a3a2a">No colocar sin contraste</span>
+      </div>
+      <div class="logo-box logo-box--bad" data-reveal>
+        <svg viewBox="0 0 458 501" style="width:70px;color:var(--accent);opacity:.28" aria-hidden="true"><use href="#iso"></use></svg>
+        <span class="logo-box__caption">No bajar la opacidad</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     05 · COLOR
+     ====================================================== -->
+<section class="section" id="color">
+  <div class="section__inner">
+    <header class="section__head">
+      <span class="section__num">05 — Color</span>
+      <h2>Neón sobre noche</h2>
+      <p class="section__lead">
+        La app se usa de noche, en la mano, con prisa. Por eso la base es oscura
+        y el acento es eléctrico: el color señala dónde está la acción y nada más.
+        Toca cualquier muestra para copiar su código.
+      </p>
+    </header>
+
+    <div class="grid grid--3" data-stagger style="margin-bottom:var(--sp-8)">
+      <button class="swatch" data-copy="#D6FF3F" data-reveal style="background:#D6FF3F;color:#0B0916">
+        <span class="swatch__copy">Copiar</span>
+        <span class="swatch__name">Voltio</span>
+        <span class="swatch__hex">#D6FF3F · rgb(214,255,63)</span>
+        <span class="swatch__role">Primario. Acción, decisión, el sí.</span>
+      </button>
+      <button class="swatch" data-copy="#FF2D87" data-reveal style="background:#FF2D87;color:#fff">
+        <span class="swatch__copy">Copiar</span>
+        <span class="swatch__name">Sacudida</span>
+        <span class="swatch__hex">#FF2D87 · rgb(255,45,135)</span>
+        <span class="swatch__role">Secundario. Energía, celebración, alerta amable.</span>
+      </button>
+      <button class="swatch" data-copy="#2BB8DE" data-reveal style="background:#2BB8DE;color:#0B0916">
+        <span class="swatch__copy">Copiar</span>
+        <span class="swatch__name">Impulso</span>
+        <span class="swatch__hex">#2BB8DE · rgb(43,184,222)</span>
+        <span class="swatch__role">Terciario. Información, enlaces, ayuda. Es el teal del logo, aclarado para fondo oscuro.</span>
+      </button>
+      <button class="swatch" data-copy="#0B0916" data-reveal style="background:#0B0916;color:#F4F2EA;border-color:var(--line)">
+        <span class="swatch__copy">Copiar</span>
+        <span class="swatch__name">Negro Vértigo</span>
+        <span class="swatch__hex">#0B0916 · rgb(11,9,22)</span>
+        <span class="swatch__role">El lienzo. Nunca negro puro: tiene azul dentro.</span>
+      </button>
+      <button class="swatch" data-copy="#F4F2EA" data-reveal style="background:#F4F2EA;color:#0B0916">
+        <span class="swatch__copy">Copiar</span>
+        <span class="swatch__name">Hueso</span>
+        <span class="swatch__hex">#F4F2EA · rgb(244,242,234)</span>
+        <span class="swatch__role">Texto sobre oscuro y fondo del tema claro.</span>
+      </button>
+      <button class="swatch" data-copy="#9A96B0" data-reveal style="background:#9A96B0;color:#0B0916">
+        <span class="swatch__copy">Copiar</span>
+        <span class="swatch__name">Bruma</span>
+        <span class="swatch__hex">#9A96B0 · rgb(154,150,176)</span>
+        <span class="swatch__role">Texto secundario, bordes, estados apagados.</span>
+      </button>
+    </div>
+
+    <h3 style="margin-bottom:var(--sp-4)">Proporción de uso</h3>
+    <p class="card__text" style="margin-bottom:var(--sp-4);max-width:60ch">
+      El acento funciona porque es escaso. Si Voltio pasa del 10 % de una pieza,
+      deja de significar «aquí se decide» y pasa a ser decoración.
+    </p>
+    <div class="ratio-bar" data-reveal style="margin-bottom:var(--sp-8)">
+      <span style="flex:60;background:#0B0916;color:#F4F2EA">60 % Vértigo</span>
+      <span style="flex:22;background:#F4F2EA;color:#0B0916">22 % Hueso</span>
+      <span style="flex:10;background:#D6FF3F;color:#0B0916">10 %</span>
+      <span style="flex:5;background:#FF2D87;color:#fff">5 %</span>
+      <span style="flex:3;background:#2BB8DE;color:#0B0916">3 %</span>
+    </div>
+
+    <h3 style="margin-bottom:var(--sp-4)">La familia Impulso</h3>
+    <p class="card__text" style="margin-bottom:var(--sp-4);max-width:60ch">
+      Impulso no es un color inventado: es <strong>el teal del logo</strong>.
+      Como el original no tiene contraste suficiente en todos los fondos, se
+      documenta como una familia de tres tonos con el mismo matiz. Son
+      variantes de un color, no colores nuevos.
+    </p>
+    <div class="table-wrap" data-reveal style="margin-bottom:var(--sp-8)">
+      <table class="spec-table">
+        <thead><tr><th>Tono</th><th>Valor</th><th>Dónde</th><th>Contraste</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Impulso Base</td><td><code>#138AAA</code></td>
+            <td>El teal original del logo. Impresión y artes finales.</td>
+            <td>4.9:1 sobre Vértigo</td>
+          </tr>
+          <tr>
+            <td>Impulso</td><td><code>#2BB8DE</code></td>
+            <td>Pantalla sobre fondo oscuro. Es el tono por defecto.</td>
+            <td>8.5:1 sobre Vértigo</td>
+          </tr>
+          <tr>
+            <td>Impulso Profundo</td><td><code>#0E6B84</code></td>
+            <td>Texto y trazos sobre fondo claro.</td>
+            <td>5.4:1 sobre Hueso</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-bottom:var(--sp-4)">Contraste y accesibilidad</h3>
+    <p class="card__text" style="margin-bottom:var(--sp-4);max-width:60ch">
+      Ratios medidos contra Negro Vértigo según WCAG 2.1. El mínimo obligatorio
+      para texto en producto es <strong>4.5:1</strong>.
+    </p>
+    <div class="contrast-grid" data-stagger style="margin-bottom:var(--sp-6)">
+      <div class="contrast-row" data-reveal>
+        <span>Hueso sobre Vértigo</span>
+        <span class="contrast-row__demo" style="background:#0B0916;color:#F4F2EA">Texto</span>
+        <span class="contrast-row__score" style="color:var(--accent)">16.1:1 · AAA</span>
+      </div>
+      <div class="contrast-row" data-reveal>
+        <span>Voltio sobre Vértigo</span>
+        <span class="contrast-row__demo" style="background:#0B0916;color:#D6FF3F">Texto</span>
+        <span class="contrast-row__score" style="color:var(--accent)">15.4:1 · AAA</span>
+      </div>
+      <div class="contrast-row" data-reveal>
+        <span>Impulso sobre Vértigo</span>
+        <span class="contrast-row__demo" style="background:#0B0916;color:#2BB8DE">Texto</span>
+        <span class="contrast-row__score" style="color:var(--accent)">8.5:1 · AAA</span>
+      </div>
+      <div class="contrast-row" data-reveal>
+        <span>Bruma sobre Vértigo</span>
+        <span class="contrast-row__demo" style="background:#0B0916;color:#9A96B0">Texto</span>
+        <span class="contrast-row__score" style="color:var(--accent)">6.9:1 · AAA</span>
+      </div>
+      <div class="contrast-row" data-reveal>
+        <span>Sacudida sobre Vértigo</span>
+        <span class="contrast-row__demo" style="background:#0B0916;color:#FF2D87">Texto</span>
+        <span class="contrast-row__score" style="color:var(--accent-3)">5.6:1 · AA</span>
+      </div>
+      <div class="contrast-row" data-reveal>
+        <span>Voltio sobre Hueso</span>
+        <span class="contrast-row__demo" style="background:#F4F2EA;color:#D6FF3F">Texto</span>
+        <span class="contrast-row__score" style="color:var(--accent-2)">1.2:1 · falla</span>
+      </div>
+    </div>
+
+    <div class="note" data-reveal>
+      <svg width="22" height="22" style="flex:none;color:var(--accent-3)" aria-hidden="true"><use href="#i-bolt"></use></svg>
+      <p>
+        <strong>Voltio nunca es color de texto sobre fondo claro.</strong>
+        En el tema claro se sustituye por <code>#4E6300</code> (Voltio Profundo,
+        6.0:1 sobre Hueso). Voltio original se reserva ahí para rellenos, con
+        texto oscuro encima. Prueba el interruptor de tema: la marca es la misma,
+        los roles se recalculan.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     06 · TIPOGRAFÍA
+     ====================================================== -->
+<section class="section" id="tipografia">
+  <div class="section__inner">
+    <header class="section__head">
+      <span class="section__num">06 — Tipografía</span>
+      <h2>Tres voces, ni una más</h2>
+      <p class="section__lead">
+        Una para gritar, una para hablar y una para dar datos. Cualquier cuarta
+        fuente en una pieza de AgitaYDecide es un error.
+      </p>
+    </header>
+
+    <div class="grid grid--3" data-stagger style="margin-bottom:var(--sp-7)">
+      <article class="card" data-reveal>
+        <p class="card__kicker">Display</p>
+        <h3 style="font-family:var(--font-display);font-size:2rem">Space Grotesk</h3>
+        <p class="card__text">Pesos 500 y 700. Títulos, cifras grandes y botones. Su geometría con
+        pequeñas rarezas es exactamente el tono: ordenada pero con chispa.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="card__kicker">Texto</p>
+        <h3 style="font-family:var(--font-text);font-size:2rem;font-weight:600">Inter</h3>
+        <p class="card__text">Pesos 400, 500 y 600. Cuerpo de texto e interfaz. Se elige por legible,
+        no por bonita: en la app se lee de pie y con prisa.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="card__kicker">Mono</p>
+        <h3 style="font-family:var(--font-mono);font-size:1.7rem">JetBrains Mono</h3>
+        <p class="card__text">Pesos 400 y 500. Etiquetas, códigos de color, datos y detalles técnicos.
+        Aporta el aire de «instrumento» sin volver seria a la marca.</p>
+      </article>
+    </div>
+
+    <div class="type-specimen" data-reveal style="margin-bottom:var(--sp-7)">
+      <p class="card__kicker">Muestrario · Space Grotesk 700</p>
+      <p class="type-specimen__glyphs">AaBbGg 0123 ¿?¡!</p>
+    </div>
+
+    <h3 style="margin-bottom:var(--sp-4)">Escala tipográfica</h3>
+    <p class="card__text" style="margin-bottom:var(--sp-4);max-width:60ch">
+      Razón <strong>1.25</strong>. Los tamaños de display son fluidos: crecen con
+      la pantalla mediante <code>clamp()</code> en lugar de saltar por puntos de corte.
+    </p>
+    <div data-reveal style="margin-bottom:var(--sp-7)">
+      <div class="type-row">
+        <span class="type-row__meta">Mega · 56–176 px · -0.04em</span>
+        <span class="type-row__sample" style="font-size:clamp(2rem,5vw,3.4rem);font-weight:700;letter-spacing:-.04em;text-transform:uppercase">Agita</span>
+      </div>
+      <div class="type-row">
+        <span class="type-row__meta">Display 1 · 42–88 px</span>
+        <span class="type-row__sample" style="font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:700;letter-spacing:-.02em">Decide sin discutir</span>
+      </div>
+      <div class="type-row">
+        <span class="type-row__meta">Display 2 · 32–56 px</span>
+        <span class="type-row__sample" style="font-size:clamp(1.4rem,2.6vw,1.8rem);font-weight:700;letter-spacing:-.02em">Títulos de sección</span>
+      </div>
+      <div class="type-row">
+        <span class="type-row__meta">Título 3 · 22–32 px</span>
+        <span class="type-row__sample" style="font-size:1.35rem;font-weight:700">Subtítulos y tarjetas</span>
+      </div>
+      <div class="type-row">
+        <span class="type-row__meta">Cuerpo · 16–17 px · 1.65</span>
+        <span class="type-row__sample" style="font-family:var(--font-text);font-size:1rem;font-weight:400">Texto corrido. Medida de 60 a 75 caracteres por línea.</span>
+      </div>
+      <div class="type-row">
+        <span class="type-row__meta">Etiqueta · 11 px · 0.16em</span>
+        <span class="type-row__sample" style="font-family:var(--font-mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase">Etiqueta de sistema</span>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:var(--sp-4)">Pruébala</h3>
+    <div class="type-specimen" data-reveal>
+      <div class="stack">
+        <div class="field">
+          <label for="type-text">Texto</label>
+          <input type="text" id="type-text" value="Agita y decide" maxlength="40">
+        </div>
+        <div class="slider-row">
+          <label for="type-size" style="width:6rem">Tamaño</label>
+          <input type="range" id="type-size" min="16" max="120" value="64">
+          <output id="type-size-out">64px</output>
+        </div>
+        <div class="slider-row">
+          <label for="type-track" style="width:6rem">Tracking</label>
+          <input type="range" id="type-track" min="-60" max="120" value="-40">
+          <output id="type-track-out">-0.040em</output>
+        </div>
+        <p id="type-sample" style="font-family:var(--font-display);font-weight:700;line-height:1.05;overflow-wrap:anywhere">Agita y decide</p>
+      </div>
+    </div>
+
+    <div class="grid grid--2" data-stagger style="margin-top:var(--sp-7)">
+      <div class="dodont__item dodont__item--do" data-reveal>
+        <span class="dodont__label">Así sí</span>
+        <p>Mayúsculas solo en display por encima de 32 px, con tracking negativo.</p>
+      </div>
+      <div class="dodont__item dodont__item--dont" data-reveal>
+        <span class="dodont__label">Así no</span>
+        <p>Párrafos enteros en mayúsculas o texto de interfaz por debajo de 15 px.</p>
+      </div>
+      <div class="dodont__item dodont__item--do" data-reveal>
+        <span class="dodont__label">Así sí</span>
+        <p>Un solo peso por bloque. El contraste se hace con tamaño, no con negritas sueltas.</p>
+      </div>
+      <div class="dodont__item dodont__item--dont" data-reveal>
+        <span class="dodont__label">Así no</span>
+        <p>Cursivas, subrayados decorativos o mezclar Space Grotesk dentro de un párrafo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     07 · ICONOGRAFÍA
+     ====================================================== -->
+<section class="section" id="iconografia">
+  <div class="section__inner">
+    <header class="section__head">
+      <span class="section__num">07 — Iconografía</span>
+      <h2>Trazo, nunca relleno</h2>
+      <p class="section__lead">
+        Los iconos son de línea porque la marca es ligera. Un icono relleno pesa,
+        y aquí nada debe pesar más de lo necesario.
+      </p>
+    </header>
+
+    <div class="grid grid--2" style="margin-bottom:var(--sp-7)">
+      <div data-reveal="left">
+        <h3 style="margin-bottom:var(--sp-4)">Construcción</h3>
+        <div class="table-wrap">
+          <table class="spec-table">
+            <tbody>
+              <tr><th>Rejilla</th><td><code>24 × 24</code> px</td></tr>
+              <tr><th>Zona viva</th><td><code>20 × 20</code> px (2 px de margen)</td></tr>
+              <tr><th>Grosor</th><td><code>2</code> px, constante</td></tr>
+              <tr><th>Terminaciones</th><td><code>round</code> en puntas y uniones</td></tr>
+              <tr><th>Radio de esquina</th><td><code>2</code> px mínimo</td></tr>
+              <tr><th>Ángulos</th><td>solo <code>0° · 45° · 90°</code></td></tr>
+              <tr><th>Relleno</th><td>solo en estado activo</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div data-reveal="right">
+        <h3 style="margin-bottom:var(--sp-4)">Sobre la rejilla</h3>
+        <div class="icon-grid-demo">
+          <svg aria-hidden="true"><use href="#i-shake"></use></svg>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:var(--sp-5)">Set base</h3>
+    <div class="grid grid--4" data-stagger>
+      <div class="icon-tile" data-reveal><svg aria-hidden="true"><use href="#i-shake"></use></svg>agitar</div>
+      <div class="icon-tile" data-reveal><svg aria-hidden="true"><use href="#i-dice"></use></svg>azar</div>
+      <div class="icon-tile" data-reveal><svg aria-hidden="true"><use href="#i-list"></use></svg>opciones</div>
+      <div class="icon-tile" data-reveal><svg aria-hidden="true"><use href="#i-group"></use></svg>grupo</div>
+      <div class="icon-tile" data-reveal><svg aria-hidden="true"><use href="#i-history"></use></svg>historial</div>
+      <div class="icon-tile" data-reveal><svg aria-hidden="true"><use href="#i-tune"></use></svg>ajustes</div>
+      <div class="icon-tile" data-reveal><svg aria-hidden="true"><use href="#i-star"></use></svg>favorito</div>
+      <div class="icon-tile" data-reveal><svg aria-hidden="true"><use href="#i-bolt"></use></svg>rápido</div>
+    </div>
+
+    <div class="grid grid--2" data-stagger style="margin-top:var(--sp-7)">
+      <div class="dodont__item dodont__item--do" data-reveal>
+        <span class="dodont__label">Así sí</span>
+        <p>Un icono por acción, siempre acompañado de texto en pantallas nuevas.</p>
+      </div>
+      <div class="dodont__item dodont__item--dont" data-reveal>
+        <span class="dodont__label">Así no</span>
+        <p>Mezclar este set con iconos de otra librería o cambiar el grosor para «que se vea mejor».</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     08 · GRAFISMOS
+     ====================================================== -->
+<section class="section" id="grafismos">
+  <div class="section__inner">
+    <header class="section__head">
+      <span class="section__num">08 — Grafismos</span>
+      <h2>La huella del movimiento</h2>
+      <p class="section__lead">
+        Cuatro tramas derivadas del gesto de agitar. Sirven para dar textura
+        cuando no hay foto — nunca para rellenar por miedo al vacío.
+      </p>
+    </header>
+
+    <div class="grid grid--2" data-stagger style="margin-bottom:var(--sp-7)">
+      <div data-reveal>
+        <div class="pattern pattern--waves"></div>
+        <p class="logo-box__caption" style="margin-top:var(--sp-3)">Vibración · líneas a 115°, paso 16 px</p>
+      </div>
+      <div data-reveal>
+        <div class="pattern pattern--dots"></div>
+        <p class="logo-box__caption" style="margin-top:var(--sp-3)">Opciones · retícula de 16 px</p>
+      </div>
+      <div data-reveal>
+        <div class="pattern pattern--arcs"></div>
+        <p class="logo-box__caption" style="margin-top:var(--sp-3)">Onda de impacto · arcos concéntricos</p>
+      </div>
+      <div data-reveal>
+        <div class="pattern pattern--noise"></div>
+        <p class="logo-box__caption" style="margin-top:var(--sp-3)">Grano nocturno · degradado + scanline</p>
+      </div>
+    </div>
+
+    <div class="grid grid--3" data-stagger>
+      <article class="card" data-reveal>
+        <p class="card__kicker">Regla</p>
+        <p class="card__text">Una sola trama por pieza. Dos tramas juntas convierten la marca en ruido.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="card__kicker">Regla</p>
+        <p class="card__text">Detrás de texto, máximo 20 % de opacidad y siempre sobre fondo plano.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="card__kicker">Regla</p>
+        <p class="card__text">Las tramas se recortan por el borde de la pieza; no se escalan para «que quepan».</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     09 · IMAGEN
+     ====================================================== -->
+<section class="section" id="imagen">
+  <div class="section__inner">
+    <header class="section__head">
+      <span class="section__num">09 — Imagen</span>
+      <h2>Fotografía e ilustración</h2>
+      <p class="section__lead">
+        Buscamos el segundo antes de decidir: la mano en el aire, la mesa a
+        medias, la luz de un letrero. Nunca el resultado perfecto y posado.
+      </p>
+    </header>
+
+    <div class="note" data-reveal style="margin-bottom:var(--sp-6)">
+      <svg width="22" height="22" style="flex:none;color:var(--accent-3)" aria-hidden="true"><use href="#i-bolt"></use></svg>
+      <p>
+        <strong>Los tres bloques de abajo son marcadores de posición.</strong>
+        Son degradados construidos con la paleta, no fotos. Marcan encuadre y
+        temperatura de color hasta que existan las imágenes reales.
+      </p>
+    </div>
+
+    <div class="grid grid--3" data-stagger style="margin-bottom:var(--sp-7)">
+      <div class="photo-card photo-card--a" data-reveal>
+        <div>
+          <p class="mock__label">Encuadre 01</p>
+          <p><strong>Gesto en primer plano.</strong> Mano y teléfono en movimiento, con arrastre.</p>
+        </div>
+      </div>
+      <div class="photo-card photo-card--b" data-reveal>
+        <div>
+          <p class="mock__label">Encuadre 02</p>
+          <p><strong>Grupo desde arriba.</strong> Mesa a medio comer, teléfonos, nadie posando.</p>
+        </div>
+      </div>
+      <div class="photo-card photo-card--c" data-reveal>
+        <div>
+          <p class="mock__label">Encuadre 03</p>
+          <p><strong>Ciudad de noche.</strong> Luz de neón real, calle, sensación de plan en curso.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid--2" data-stagger>
+      <div class="dodont__item dodont__item--do" data-reveal>
+        <span class="dodont__label">Así sí</span>
+        <p>Luz dura de noche, colores saturados, algo de grano, movimiento visible.</p>
+      </div>
+      <div class="dodont__item dodont__item--dont" data-reveal>
+        <span class="dodont__label">Así no</span>
+        <p>Stock de oficina, gente sonriendo a cámara con los pulgares arriba, fondos blancos infinitos.</p>
+      </div>
+      <div class="dodont__item dodont__item--do" data-reveal>
+        <span class="dodont__label">Así sí</span>
+        <p>Ilustración plana, mismo trazo de 2 px que los iconos, máximo tres colores de la paleta.</p>
+      </div>
+      <div class="dodont__item dodont__item--dont" data-reveal>
+        <span class="dodont__label">Así no</span>
+        <p>Degradados de tres colores en un mismo objeto, 3D realista o mascotas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     10 · MOVIMIENTO
+     ====================================================== -->
+<section class="section" id="motion">
+  <div class="section__inner">
+    <header class="section__head">
+      <span class="section__num">10 — Movimiento</span>
+      <h2>Cómo se mueve la marca</h2>
+      <p class="section__lead">
+        AgitaYDecide es una marca de gesto: si no se mueve bien, no es ella.
+        Toda animación imita lo mismo — arranque brusco, oscilación, asentamiento.
+        Toca cualquier curva para verla correr.
+      </p>
+    </header>
+
+    <div class="grid grid--3" data-stagger style="margin-bottom:var(--sp-7)">
+      <article class="card" data-reveal>
+        <p class="card__kicker">Principio 01</p>
+        <h4 class="card__title">Arranca rápido, se asienta</h4>
+        <p class="card__text">Nada acelera despacio. La energía está al inicio y el final es una llegada suave.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="card__kicker">Principio 02</p>
+        <h4 class="card__title">Techo de 720 ms</h4>
+        <p class="card__text">Salvo la escena de bienvenida, nada dura más. Una marca sobre decidir rápido no puede hacerse esperar.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="card__kicker">Principio 03</p>
+        <h4 class="card__title">El movimiento explica</h4>
+        <p class="card__text">Cada animación dice de dónde viene algo o qué acaba de pasar. Si solo decora, se quita.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="card__kicker">Principio 04</p>
+        <h4 class="card__title">Siempre hay salida</h4>
+        <p class="card__text">Con <code>prefers-reduced-motion</code> activo todo se detiene y la información sigue completa. Esta misma página lo cumple.</p>
+      </article>
+    </div>
+
+    <h3 style="margin-bottom:var(--sp-5)">Curvas de la marca</h3>
+    <div class="grid grid--2" data-stagger style="margin-bottom:var(--sp-7)">
+      <div class="ease-demo" data-reveal role="button" tabindex="0" style="--demo-ease:cubic-bezier(.36,.07,.19,.97)">
+        <div class="ease-demo__track"><div class="ease-demo__ball"></div></div>
+        <div class="ease-demo__meta"><b>Agitar</b><span>cubic-bezier(.36, .07, .19, .97)</span></div>
+        <p class="card__text">La firma. Para el gesto, el veredicto y cualquier sacudida.</p>
+      </div>
+      <div class="ease-demo" data-reveal role="button" tabindex="0" style="--demo-ease:cubic-bezier(.16,1,.3,1)">
+        <div class="ease-demo__track"><div class="ease-demo__ball"></div></div>
+        <div class="ease-demo__meta"><b>Entrada</b><span>cubic-bezier(.16, 1, .3, 1)</span></div>
+        <p class="card__text">Para todo lo que aparece: tarjetas, paneles, revelados por scroll.</p>
+      </div>
+      <div class="ease-demo" data-reveal role="button" tabindex="0" style="--demo-ease:cubic-bezier(.65,0,.35,1)">
+        <div class="ease-demo__track"><div class="ease-demo__ball"></div></div>
+        <div class="ease-demo__meta"><b>Transición</b><span>cubic-bezier(.65, 0, .35, 1)</span></div>
+        <p class="card__text">Cambios de estado simétricos: temas, pestañas, abrir y cerrar.</p>
+      </div>
+      <div class="ease-demo" data-reveal role="button" tabindex="0" style="--demo-ease:cubic-bezier(.34,1.56,.64,1)">
+        <div class="ease-demo__track"><div class="ease-demo__ball"></div></div>
+        <div class="ease-demo__meta"><b>Rebote</b><span>cubic-bezier(.34, 1.56, .64, 1)</span></div>
+        <p class="card__text">Solo en momentos de premio: el veredicto, un logro, un botón pulsado.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:var(--sp-4)">Duraciones</h3>
+    <div class="table-wrap" data-reveal>
+      <table class="spec-table">
+        <thead><tr><th>Token</th><th>Valor</th><th>Cuándo</th></tr></thead>
+        <tbody>
+          <tr><td>instant</td><td><code>120 ms</code></td><td>Cambios de color en hover y foco</td></tr>
+          <tr><td>fast</td><td><code>220 ms</code></td><td>Botones, chips, micro-interacciones</td></tr>
+          <tr><td>base</td><td><code>420 ms</code></td><td>Tarjetas, paneles, cambio de tema</td></tr>
+          <tr><td>slow</td><td><code>720 ms</code></td><td>Revelados por scroll, la sacudida completa</td></tr>
+          <tr><td>scene</td><td><code>1200 ms</code></td><td>Solo bienvenida y barras de personalidad</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     11 · COMPONENTES
+     ====================================================== -->
+<section class="section" id="componentes">
+  <div class="section__inner">
+    <header class="section__head">
+      <span class="section__num">11 — Componentes</span>
+      <h2>Piezas de interfaz</h2>
+      <p class="section__lead">
+        El sistema mínimo con el que se arma cualquier pantalla de AgitaYDecide.
+        Todo lo que ves aquí es funcional: pruébalo.
+      </p>
+    </header>
+
+    <div data-tabs style="margin-bottom:var(--sp-7)">
+      <div class="tabs" role="tablist" aria-label="Familias de componentes">
+        <button class="tab" role="tab" id="t-1" aria-controls="p-1">Botones</button>
+        <button class="tab" role="tab" id="t-2" aria-controls="p-2">Entradas</button>
+        <button class="tab" role="tab" id="t-3" aria-controls="p-3">Contenedores</button>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="p-1" aria-labelledby="t-1">
+        <div class="card">
+          <div class="row" style="gap:var(--sp-4);margin-bottom:var(--sp-5)">
+            <button class="btn">Agitar</button>
+            <button class="btn btn--pink">Repetir</button>
+            <button class="btn btn--ghost">Cancelar</button>
+            <button class="btn btn--sm">Añadir opción</button>
+          </div>
+          <div class="table-wrap">
+            <table class="spec-table">
+              <thead><tr><th>Propiedad</th><th>Primario</th><th>Fantasma</th></tr></thead>
+              <tbody>
+                <tr><td>Alto</td><td><code>48 px</code></td><td><code>48 px</code></td></tr>
+                <tr><td>Radio</td><td><code>999 px</code></td><td><code>999 px</code></td></tr>
+                <tr><td>Relleno</td><td><code>Voltio</code></td><td><code>transparente</code></td></tr>
+                <tr><td>Texto</td><td>Space Grotesk 700</td><td>Space Grotesk 700</td></tr>
+                <tr><td>Hover</td><td>sube 2 px + glow</td><td>fondo al 8 %</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="card__text" style="margin-top:var(--sp-4)">
+            <strong>Un solo botón primario por pantalla.</strong> Si hay dos cosas
+            igual de importantes, es que la pantalla todavía no está decidida.
+          </p>
+        </div>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="p-2" aria-labelledby="t-2" hidden>
+        <div class="card">
+          <div class="grid grid--2">
+            <div class="field">
+              <label for="demo-input">Nueva opción</label>
+              <input type="text" id="demo-input" placeholder="Pizza, sushi, lo que sea…">
+            </div>
+            <div class="stack">
+              <label class="logo-box__caption">Interruptores</label>
+              <div class="row" style="gap:var(--sp-4)">
+                <span class="toggle" role="switch" aria-checked="true" tabindex="0" aria-label="Vibración al agitar"></span>
+                <span class="card__text">Vibración al agitar</span>
+              </div>
+              <div class="row" style="gap:var(--sp-4)">
+                <span class="toggle" role="switch" aria-checked="false" tabindex="0" aria-label="No repetir resultado"></span>
+                <span class="card__text">No repetir resultado</span>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="margin-top:var(--sp-5)">
+            <span class="chip"><span class="chip__dot"></span>Neutro</span>
+            <span class="chip chip--accent">Seleccionado</span>
+            <span class="chip chip--ok">Válido</span>
+            <span class="chip chip--no">Falta algo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="p-3" aria-labelledby="t-3" hidden>
+        <div class="grid grid--3">
+          <article class="card card--hover">
+            <p class="card__kicker">Tarjeta</p>
+            <h4 class="card__title">Radio 22 px</h4>
+            <p class="card__text">Borde al 8 %, fondo elevado, sube 6 px al pasar el cursor.</p>
+          </article>
+          <div class="note" style="margin:0">
+            <svg width="20" height="20" style="flex:none" aria-hidden="true"><use href="#i-bolt"></use></svg>
+            <p><strong>Aviso.</strong> Borde discontinuo en Impulso. Solo para información, nunca para errores.</p>
+          </div>
+          <div class="dodont__item dodont__item--dont" style="margin:0">
+            <span class="dodont__label">Bloque de error</span>
+            <p>Barra izquierda en Sacudida. El texto explica qué hacer, no qué se hizo mal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:var(--sp-5)">La pantalla completa</h3>
+    <div class="grid grid--2">
+      <div data-reveal="left">
+        <div class="phone">
+          <div class="phone__screen">
+            <div class="row" style="justify-content:space-between;margin-top:var(--sp-3)">
+              <svg width="24" height="24" style="color:var(--raw-voltio)" aria-hidden="true"><use href="#iso"></use></svg>
+              <svg width="20" height="20" style="color:var(--raw-bruma)" aria-hidden="true"><use href="#i-tune"></use></svg>
+            </div>
+            <p style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--raw-bruma)">Esta noche</p>
+            <p style="font-family:var(--font-display);font-weight:700;font-size:1.4rem;line-height:1.1;color:var(--raw-voltio)" data-phone-result>Agita para saber</p>
+            <div class="stack" style="gap:.4rem;margin-top:auto">
+              <div style="padding:.55rem .8rem;border-radius:10px;background:#1C1738;font-size:.72rem">Pizza</div>
+              <div style="padding:.55rem .8rem;border-radius:10px;background:#1C1738;font-size:.72rem">Sushi</div>
+              <div style="padding:.55rem .8rem;border-radius:10px;background:#1C1738;font-size:.72rem">Arepas</div>
+              <div style="padding:.7rem;border-radius:999px;background:#D6FF3F;color:#0B0916;text-align:center;font-family:var(--font-display);font-weight:700;font-size:.8rem;margin-top:.4rem">Agitar</div>
+            </div>
+          </div>
+        </div>
+        <p class="logo-box__caption" style="text-align:center;margin-top:var(--sp-4)">
+          Se sincroniza con el botón de la portada
+        </p>
+      </div>
+
+      <div class="stack" data-reveal="right">
+        <h4>Reglas de composición</h4>
+        <div class="table-wrap">
+          <table class="spec-table">
+            <tbody>
+              <tr><th>Rejilla base</th><td><code>4 px</code> · todo espaciado es múltiplo</td></tr>
+              <tr><th>Margen lateral</th><td><code>16 px</code> en móvil, <code>64 px</code> en escritorio</td></tr>
+              <tr><th>Área táctil</th><td><code>44 × 44 px</code> mínimo</td></tr>
+              <tr><th>Acción principal</th><td>siempre en el tercio inferior, alcanzable con el pulgar</td></tr>
+              <tr><th>Jerarquía</th><td>una idea por pantalla; si hay dos, son dos pantallas</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="card__text">
+          La acción principal vive abajo porque la app se usa con una mano y
+          de pie. Cualquier botón importante en la mitad superior rompe el
+          principio de «tres toques como techo».
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     12 · APLICACIONES
+     ====================================================== -->
+<section class="section" id="aplicaciones">
+  <div class="section__inner">
+    <header class="section__head">
+      <span class="section__num">12 — Aplicaciones</span>
+      <h2>La marca en el mundo</h2>
+      <p class="section__lead">
+        Maquetas de referencia. Muestran cómo se comporta el sistema fuera de la
+        app: qué manda en cada formato y cuánto acento tolera cada pieza.
+      </p>
+    </header>
+
+    <div class="grid grid--2" data-stagger style="margin-bottom:var(--sp-6)">
+      <div class="mock mock--card" data-reveal>
+        <div class="row" style="justify-content:space-between;align-items:flex-start">
+          <svg width="34" height="34" style="color:var(--raw-voltio)" aria-hidden="true"><use href="#iso"></use></svg>
+          <span class="mock__label">Tarjeta · 85 × 55 mm</span>
+        </div>
+        <div>
+          <p class="mock__big">Jesús Flórez</p>
+          <p style="font-family:var(--font-mono);font-size:.7rem;color:var(--raw-bruma);letter-spacing:.1em">
+            PRODUCTO · hola@agitaydecide.app
+          </p>
+        </div>
+      </div>
+
+      <div class="mock mock--social" data-reveal>
+        <span class="mock__label">Post · 1:1</span>
+        <p class="mock__big" style="text-transform:uppercase;letter-spacing:-.03em">
+          ¿Dónde<br>cenamos?<br>Ya está<br>resuelto.
+        </p>
+        <div class="row" style="justify-content:space-between">
+          <svg width="28" height="28" style="color:#0B0916" aria-hidden="true"><use href="#iso"></use></svg>
+          <span class="mock__label">agitaydecide.app</span>
+        </div>
+      </div>
+
+      <div class="mock mock--merch" data-reveal>
+        <span class="mock__label">Merch · camiseta</span>
+        <p class="mock__big" style="text-align:center;text-transform:uppercase">
+          Yo no decidí.<br>Decidió el azar.
+        </p>
+        <span class="mock__label" style="text-align:center">Pecho · 1 tinta</span>
+      </div>
+
+      <div class="mock mock--store" data-reveal>
+        <span class="mock__label">Ficha de tienda</span>
+        <div class="row" style="gap:var(--sp-4);align-items:center">
+          <div style="width:64px;height:64px;border-radius:16px;background:#0B0916;display:grid;place-items:center;flex:none">
+            <svg width="38" height="38" style="color:var(--raw-voltio)" aria-hidden="true"><use href="#iso"></use></svg>
+          </div>
+          <div>
+            <p style="font-family:var(--font-display);font-weight:700;font-size:1.1rem">AgitaYDecide</p>
+            <p class="card__text" style="font-size:.8rem">Decide en un segundo. Sin discutir.</p>
+          </div>
+        </div>
+        <div class="row">
+          <span class="chip chip--ok">4.8 ★</span>
+          <span class="chip">Estilo de vida</span>
+          <span class="chip">Gratis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid--3" data-stagger>
+      <article class="card" data-reveal>
+        <p class="card__kicker">Regla de formato</p>
+        <p class="card__text">En piezas pequeñas (tarjeta, favicon, merch) manda el isotipo solo. El logotipo necesita aire.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="card__kicker">Regla de formato</p>
+        <p class="card__text">En redes, el fondo es Voltio o Vértigo. Nunca Sacudida a página completa: satura.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="card__kicker">Regla de formato</p>
+        <p class="card__text">En impreso a una tinta se usa Vértigo. Voltio impreso pierde el brillo y se vuelve mostaza.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     13 · RECURSOS
+     ====================================================== -->
+<section class="section" id="recursos">
+  <div class="section__inner">
+    <header class="section__head">
+      <span class="section__num">13 — Recursos</span>
+      <h2>Llévate el sistema</h2>
+      <p class="section__lead">
+        Archivos, tokens y las dudas frecuentes. Si algo no está aquí,
+        no está normado: pregunta antes de inventarlo.
+      </p>
+    </header>
+
+    <div class="stack" data-stagger style="margin-bottom:var(--sp-7)">
+      <a class="resource-row" data-reveal href="assets/logo/logotipo.svg" download>
+        <span><strong>Logotipo horizontal</strong><br><span class="resource-row__meta">SVG · color heredado</span></span>
+        <svg width="22" height="22" style="color:var(--accent)" aria-hidden="true"><use href="#i-download"></use></svg>
+      </a>
+      <a class="resource-row" data-reveal href="assets/logo/isotipo.svg" download>
+        <span><strong>Isotipo</strong><br><span class="resource-row__meta">SVG · color heredado</span></span>
+        <svg width="22" height="22" style="color:var(--accent)" aria-hidden="true"><use href="#i-download"></use></svg>
+      </a>
+      <a class="resource-row" data-reveal href="css/tokens.css" download>
+        <span><strong>Tokens del sistema</strong><br><span class="resource-row__meta">CSS · colores, tipos, motion</span></span>
+        <svg width="22" height="22" style="color:var(--accent)" aria-hidden="true"><use href="#i-download"></use></svg>
+      </a>
+      <button class="resource-row" data-reveal style="width:100%;text-align:left;cursor:pointer"
+        data-copy="#D6FF3F #FF2D87 #2BB8DE #138AAA #0E6B84 #0B0916 #F4F2EA #9A96B0">
+        <span><strong>Paleta completa</strong><br><span class="resource-row__meta">Copiar los 6 códigos HEX</span></span>
+        <svg width="22" height="22" style="color:var(--accent)" aria-hidden="true"><use href="#i-list"></use></svg>
+      </button>
+    </div>
+
+    <h3 style="margin-bottom:var(--sp-5)">Dudas frecuentes</h3>
+    <div class="grid grid--2" data-stagger style="margin-bottom:var(--sp-7)">
+      <article class="card" data-reveal>
+        <p class="card__kicker">¿Puedo usar otro color?</p>
+        <p class="card__text">No. Seis colores es el sistema completo. Si falta un matiz, se resuelve con opacidad o con los grises intermedios, nunca con un color nuevo.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="card__kicker">¿Y si el fondo es una foto?</p>
+        <p class="card__text">Isotipo en Hueso sobre una capa de Vértigo al 60 %. El contraste mínimo de 4.5:1 no se negocia por estética.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="card__kicker">¿Puedo animar el logo?</p>
+        <p class="card__text">Sí, con la curva «Agitar» y máximo 720 ms. Nunca lo hagas girar sobre sí mismo ni pulsar en bucle.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="card__kicker">¿Cómo cambio el logo definitivo?</p>
+        <p class="card__text">Se reemplaza en los dos <code>&lt;symbol&gt;</code> del <code>index.html</code> y en los dos SVG de <code>assets/logo/</code>. Nada más.</p>
+      </article>
+    </div>
+
+    <div class="note" data-reveal>
+      <svg width="22" height="22" style="flex:none;color:var(--accent-3)" aria-hidden="true"><use href="#i-bolt"></use></svg>
+      <p>
+        <strong>AgitaYDecide es una marca ficticia</strong> creada como ejercicio
+        académico para la electiva de Diseño Web. No representa a ningún producto
+        ni empresa real.
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div>
+      <svg viewBox="0 0 470 130" style="width:220px;color:var(--accent);margin-bottom:var(--sp-4)" role="img" aria-label="AgitaYDecide"><use href="#logotipo"></use></svg>
+      <p class="footer__legal">
+        Manual de marca v1.0 · Proyecto académico de la electiva Diseño Web.<br>
+        Jesús Flórez · David Martinez · <span data-year>2026</span>
+      </p>
+    </div>
+    <div class="row">
+      <a class="btn btn--ghost btn--sm" href="#inicio">Volver arriba</a>
+      <a class="btn btn--sm" href="#recursos">Recursos</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite">
+  <svg width="18" height="18" aria-hidden="true"><use href="#i-bolt"></use></svg>
+  <span class="toast__text"></span>
+</div>
+
+<script src="js/ui.js" defer></script>
+<script src="js/scroll.js" defer></script>
+<script src="js/cursor.js" defer></script>
+<script src="js/shake.js" defer></script>
+</body>
+</html>

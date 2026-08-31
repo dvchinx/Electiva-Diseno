@@ -1,0 +1,174 @@
+/* ============================================================
+   Estructura: navegación, retícula y secciones
+   ============================================================ */
+
+/* ---------- Barra de progreso de lectura ---------- */
+.progress {
+  position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 200;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  will-change: transform;
+}
+
+/* ---------- Cabecera móvil ---------- */
+.topbar {
+  position: fixed; inset: 0 0 auto 0; z-index: 150;
+  display: none; align-items: center; justify-content: space-between;
+  gap: var(--sp-4);
+  padding: var(--sp-3) var(--gutter);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+/* ---------- Navegación lateral ---------- */
+.nav {
+  position: fixed; inset: 0 auto 0 0; z-index: 160;
+  width: var(--nav-w);
+  display: flex; flex-direction: column;
+  padding: var(--sp-6) var(--sp-5);
+  border-right: 1px solid var(--line-soft);
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  backdrop-filter: blur(20px);
+}
+
+.nav__brand {
+  display: flex; align-items: center; gap: var(--sp-3);
+  margin-bottom: var(--sp-6);
+}
+.nav__brand-mark { width: 38px; height: 38px; flex: none; }
+.nav__brand-name {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 0.95rem; letter-spacing: var(--tracking-tight); line-height: 1.1;
+}
+.nav__brand-sub {
+  font-family: var(--font-mono); font-size: var(--fs-micro);
+  color: var(--text-dim); letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.nav__list {
+  display: flex; flex-direction: column; gap: 1px;
+  overflow-y: auto; flex: 1;
+  margin: 0 calc(var(--sp-3) * -1);
+  padding: 0 var(--sp-3);
+  scrollbar-width: thin;
+}
+
+.nav__link {
+  display: grid; grid-template-columns: 2.1rem 1fr; align-items: center;
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-sm); color: var(--text-dim);
+  transition: color var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out);
+}
+.nav__link span:first-child {
+  font-family: var(--font-mono); font-size: var(--fs-micro);
+  opacity: .55;
+}
+.nav__link:hover { color: var(--text); background: var(--line-soft); }
+
+.nav__link[aria-current="true"] {
+  color: var(--on-accent);
+  background: var(--accent);
+  font-weight: 600;
+}
+.nav__link[aria-current="true"] span:first-child { opacity: .75; }
+
+.nav__foot {
+  padding-top: var(--sp-4); margin-top: var(--sp-4);
+  border-top: 1px solid var(--line-soft);
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3);
+}
+
+/* ---------- Contenedor principal ----------
+   El pie va fuera de <main> por semántica, así que necesita el mismo
+   desplazamiento: si no, queda por debajo de la barra lateral fija. */
+.main,
+.footer { margin-left: var(--nav-w); }
+
+.section {
+  position: relative;
+  padding: var(--sp-10) var(--gutter);
+  border-top: 1px solid var(--line-soft);
+  scroll-margin-top: 0;
+}
+.section--flush { border-top: none; }
+.section__inner { max-width: var(--maxw); margin-inline: auto; }
+
+/* Encabezado de sección: número + título + bajada */
+.section__head { margin-bottom: var(--sp-8); max-width: 62ch; }
+.section__num {
+  display: inline-flex; align-items: center; gap: var(--sp-3);
+  font-family: var(--font-mono); font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-wide); text-transform: uppercase;
+  color: var(--accent); margin-bottom: var(--sp-4);
+}
+.section__num::after {
+  content: ""; width: 3rem; height: 1px; background: currentColor; opacity: .5;
+}
+.section__lead {
+  margin-top: var(--sp-4);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  color: var(--text-dim);
+}
+
+/* ---------- Retículas reutilizables ---------- */
+.grid { display: grid; gap: var(--sp-5); }
+.grid--2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+.grid--3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.grid--4 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+
+.stack { display: flex; flex-direction: column; gap: var(--sp-4); }
+.row { display: flex; flex-wrap: wrap; gap: var(--sp-3); align-items: center; }
+
+/* ---------- Pie ---------- */
+.footer {
+  padding: var(--sp-9) var(--gutter) var(--sp-7);
+  border-top: 1px solid var(--line-soft);
+  background: var(--bg-elev);
+}
+.footer__inner {
+  max-width: var(--maxw); margin-inline: auto;
+  display: flex; flex-wrap: wrap; gap: var(--sp-6);
+  justify-content: space-between; align-items: flex-end;
+}
+.footer__legal {
+  font-size: var(--fs-xs); color: var(--text-dim); max-width: 46ch;
+}
+
+/* ============================================================
+   Responsive: por debajo de 1100px la nav lateral se convierte
+   en un panel a pantalla completa.
+   ============================================================ */
+@media (max-width: 1100px) {
+  .topbar { display: flex; }
+  .main, .footer { margin-left: 0; }
+  .main { padding-top: 64px; }
+
+  .nav {
+    inset: 0; width: 100%;
+    padding: 84px var(--gutter) var(--sp-6);
+    background: color-mix(in srgb, var(--bg) 96%, transparent);
+    border-right: none;
+    translate: -100% 0;
+    visibility: hidden;
+    transition: translate var(--dur-base) var(--ease-out),
+                visibility 0s linear var(--dur-base);
+  }
+  .nav[data-open="true"] {
+    translate: 0 0; visibility: visible;
+    transition: translate var(--dur-base) var(--ease-out), visibility 0s;
+  }
+  .nav__brand { display: none; }
+  .nav__list { gap: var(--sp-1); }
+  .nav__link { padding: var(--sp-3); font-size: 1.05rem; }
+
+  .section { padding-block: var(--sp-9); }
+}
+
+@media (max-width: 640px) {
+  .section { padding-block: var(--sp-8); }
+}

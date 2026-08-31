@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 458 501" width="458" height="501" role="img" aria-label="Isotipo AgitaYDecide">
+  <title>AgitaYDecide · isotipo</title>
+  <!-- Silueta ráster usada como máscara de luminancia: el relleno es
+       currentColor, así que el logo hereda el color de su contexto. -->
+  <mask id="m-agita" maskUnits="userSpaceOnUse" x="0" y="0" width="458" height="501">
+    <image href="logo-agita-mask.png" x="0" y="0" width="458" height="501"/>
+  </mask>
+  <rect width="458" height="501" fill="currentColor" mask="url(#m-agita)"/>
+</svg>

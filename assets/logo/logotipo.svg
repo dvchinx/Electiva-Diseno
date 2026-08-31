@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 130" width="470" height="130" role="img" aria-label="Logotipo AgitaYDecide">
+  <title>AgitaYDecide · logotipo horizontal</title>
+  <mask id="m-agita" maskUnits="userSpaceOnUse" x="0" y="0" width="458" height="501">
+    <image href="logo-agita-mask.png" x="0" y="0" width="458" height="501"/>
+  </mask>
+  <g transform="translate(0,8) scale(0.2275)">
+    <rect width="458" height="501" fill="currentColor" mask="url(#m-agita)"/>
+  </g>
+  <text x="128" y="86" font-family="Space Grotesk, sans-serif" font-size="48"
+        font-weight="700" letter-spacing="-1.8" fill="currentColor">AgitaYDecide</text>
+</svg>

@@ -1,0 +1,102 @@
+/* ============================================================
+   Reset + tipografía base
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+* { margin: 0; }
+
+html {
+  scroll-behavior: smooth;
+  /* deja aire bajo la barra superior al saltar a un ancla */
+  scroll-padding-top: 96px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-text);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  transition: background var(--dur-base) var(--ease-in-out),
+              color var(--dur-base) var(--ease-in-out);
+}
+
+/* Cursor propio: se oculta el nativo solo si hay puntero fino */
+@media (hover: hover) and (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor * { cursor: none; }
+}
+
+img, svg, video { display: block; max-width: 100%; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--fs-d1); line-height: var(--lh-tight); }
+h2 { font-size: var(--fs-d2); line-height: var(--lh-tight); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); }
+
+p { text-wrap: pretty; }
+
+a { color: inherit; text-decoration: none; }
+
+button { font: inherit; color: inherit; background: none; border: none; padding: 0; }
+
+ul, ol { list-style: none; padding: 0; }
+
+code, kbd, samp { font-family: var(--font-mono); font-size: 0.9em; }
+
+::selection { background: var(--accent); color: var(--on-accent); }
+
+:focus-visible {
+  outline: 3px solid var(--accent-3);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
+
+/* Solo para lectores de pantalla */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* Salto de accesibilidad */
+.skip-link {
+  position: fixed; top: 0; left: 50%; translate: -50% -120%;
+  z-index: 999; padding: var(--sp-3) var(--sp-5);
+  background: var(--accent); color: var(--on-accent);
+  font-weight: 600; border-radius: 0 0 var(--r-md) var(--r-md);
+  transition: translate var(--dur-fast) var(--ease-out);
+}
+.skip-link:focus-visible { translate: -50% 0; }
+
+/* Barra de scroll con color de marca */
+@supports (scrollbar-color: red blue) {
+  html { scrollbar-color: var(--line) transparent; scrollbar-width: thin; }
+}
+
+/* ------------------------------------------------------------
+   Respeto absoluto por prefers-reduced-motion.
+   La marca es animada, pero nunca a costa de quien no puede verla.
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
